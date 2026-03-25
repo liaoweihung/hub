@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>DiamondL 開發系列作品</title>
+    
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💎</text></svg>">
+    
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #1a1a1a; /* 專業深色背景 */
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .header {
+            text-align: center;
+            padding: 40px 20px 20px;
+            width: 100%;
+            background-color: #222;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 24px;
+            letter-spacing: 1px;
+            color: #66b3ff;
+        }
+        .header p {
+            color: #aaa;
+            font-size: 14px;
+            margin-top: 8px;
+        }
+        .container {
+            width: 100%;
+            max-width: 500px;
+            padding: 20px;
+            box-sizing: border-box;
+            flex-grow: 1;
+        }
+        .app-card {
+            background-color: #2a2a2a;
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: white;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            transition: transform 0.2s, background-color 0.2s;
+        }
+        .app-card:active {
+            transform: scale(0.98); /* 點擊時會有微縮小的按鈕回饋感 */
+            background-color: #333;
+        }
+        .app-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            object-fit: cover;
+            margin-right: 15px;
+            background-color: #fff; 
+        }
+        .app-info {
+            flex-grow: 1;
+        }
+        .app-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .app-desc {
+            font-size: 13px;
+            color: #bbb;
+        }
+        .app-arrow {
+            color: #66b3ff;
+            font-size: 20px;
+            margin-left: 10px;
+        }
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: #666;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>💎 DiamondL</h1>
+        <p>臨床藥學與衛教工具系列</p>
+    </div>
+
+    <div class="container">
+        
+        <a href="https://liaoweihung.github.io/pteduimg/index.html" class="app-card">
+            <img src="https://liaoweihung.github.io/pteduimg/icon.png" alt="藥局衛教助手" class="app-icon">
+            <div class="app-info">
+                <div class="app-title">藥局衛教助手</div>
+                <div class="app-desc">臨床常用藥品圖文衛教與多國語言</div>
+            </div>
+            <div class="app-arrow">➔</div>
+        </a>
+
+        <a href="https://liaoweihung.github.io/ped_abx/index.html" class="app-card">
+            <img src="https://liaoweihung.github.io/ped_abx/icon.png" alt="兒科口服抗生素速算" class="app-icon">
+            <div class="app-info">
+                <div class="app-title">兒科口服抗生素速算</div>
+                <div class="app-desc">快速計算兒科常見口服抗生素劑量(包含克流感)</div>
+            </div>
+            <div class="app-arrow">➔</div>
+        </a>
+
+        <a href="https://liaoweihung.github.io/ped_abx/injectables.html" class="app-card">
+            <img src="https://liaoweihung.github.io/ped_abx/icon_ing.png" alt="兒科針劑劑量速算" class="app-icon">
+            <div class="app-info">
+                <div class="app-title">兒科針劑劑量速算</div>
+                <div class="app-desc">兒科急診與病房常用針劑劑量計算</div>
+            </div>
+            <div class="app-arrow">➔</div>
+        </a>
+
+    </div>
+
+    <div class="footer">
+        &copy; 2026 DiamondL. All rights reserved.
+    </div>
+
+</body>
+</html>
