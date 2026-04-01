@@ -33,8 +33,24 @@
             font-size: 1.5rem;
             font-weight: bold;
             margin-top: 0;
-            margin-bottom: 30px;
+            margin-bottom: 20px; /* 微調間距以容納標籤 */
             letter-spacing: 1px;
+        }
+
+        /* 動態來源標籤樣式 */
+        .app-badge {
+            background: rgba(52, 152, 219, 0.15); 
+            color: #3498db;
+            border: 1px solid #3498db;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            display: inline-block;
+            margin-bottom: 25px;
+            font-weight: bold;
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
         }
 
         .input-group {
@@ -97,6 +113,8 @@
 <div class="feedback-container">
     <h2 class="brand-title">💎 DiamondL 藥師工具APP意見回饋</h2>
     
+    <div id="app-badge" class="app-badge">載入中...</div>
+    
     <form id="diamondl-form">
         <div class="input-group">
             <label for="feedback-content">請留下您的建議或想法：</label>
@@ -108,12 +126,15 @@
 </div>
 
 <script>
-    // 🔗 請將下方引號內的網址，替換成您剛剛部署 GAS 獲得的 Web App URL
+    // 您的 GAS Web App URL
     const GAS_URL = "https://script.google.com/macros/s/AKfycbw0uIMQZIeqmx-D0i4YBN7FPidC1QEteoNp6Ae28fMPKFC9HmH10jx6pvIB2DCom5R_/exec";
 
-    // 取得網址列的參數（這樣我們就能知道他是從「衛教助手」還是「自學網」點擊過來的）
+    // 取得網址列的參數
     const urlParams = new URLSearchParams(window.location.search);
     const sourceApp = urlParams.get('source') || '💎DiamondL 藥師工具總覽';
+
+    // 將 App 名稱顯示在畫面的標籤上
+    document.getElementById('app-badge').innerText = `來源：${sourceApp}`;
 
     document.getElementById('diamondl-form').addEventListener('submit', function(e) {
         e.preventDefault(); // 阻止表單預設的跳轉行為
@@ -145,15 +166,15 @@
             msg.style.display = "block";
             document.getElementById('feedback-content').value = "";
             
-            // 3秒後恢復按鈕原狀
+            // 3秒後恢復按鈕原狀 (同步改成「送出」)
             setTimeout(() => {
-                btn.innerText = "傳送回饋";
+                btn.innerText = "送出";
                 btn.disabled = false;
             }, 3000);
         })
         .catch(error => {
             // 傳送失敗：顯示紅色警告
-            btn.innerText = "傳送回饋";
+            btn.innerText = "送出"; // 同步改成「送出」
             btn.disabled = false;
             msg.innerText = "❌ 傳送失敗，請稍後再試。";
             msg.style.color = "#e74c3c";
