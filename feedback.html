@@ -9,7 +9,7 @@
         * { box-sizing: border-box; }
         body {
             margin: 0; padding: 0;
-            background-color: #1a1a2e; /* 您的深色背景 */
+            background-color: #1a1a2e;
             color: #e0e0e0;
             font-family: -apple-system, sans-serif;
             display: flex;
@@ -19,7 +19,7 @@
         }
 
         .feedback-container {
-            background: #252542; /* 表單區塊的微凸起底色 */
+            background: #252542;
             padding: 40px 30px;
             border-radius: 16px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
@@ -27,30 +27,32 @@
             max-width: 500px;
         }
 
-        .brand-title {
-            text-align: center;
-            color: #3498db; /* DiamondL 專屬藍色 */
-            font-size: 1.5rem;
-            font-weight: bold;
-            margin-top: 0;
-            margin-bottom: 20px; /* 微調間距以容納標籤 */
-            letter-spacing: 1px;
-        }
-
-        /* 動態來源標籤樣式 */
+        /* 調整後：動態來源標籤樣式 (第一排) */
         .app-badge {
             background: rgba(52, 152, 219, 0.15); 
             color: #3498db;
             border: 1px solid #3498db;
-            padding: 6px 12px;
+            padding: 8px 18px;
             border-radius: 20px;
-            font-size: 0.85rem;
+            font-size: 1rem; /* 字體稍微放大 */
             display: inline-block;
-            margin-bottom: 25px;
+            margin-bottom: 15px; /* 與下方標題的距離 */
             font-weight: bold;
             position: relative;
             left: 50%;
             transform: translateX(-50%);
+            letter-spacing: 1px;
+        }
+
+        /* 調整後：標題樣式 (第二排) */
+        .brand-title {
+            text-align: center;
+            color: #ffffff; /* 改為純白，讓層次分明 */
+            font-size: 1.6rem;
+            font-weight: bold;
+            margin-top: 0;
+            margin-bottom: 25px;
+            letter-spacing: 2px;
         }
 
         .input-group {
@@ -111,9 +113,9 @@
 <body>
 
 <div class="feedback-container">
-    <h2 class="brand-title">💎 DiamondL 藥師工具APP意見回饋</h2>
-    
     <div id="app-badge" class="app-badge">載入中...</div>
+    
+    <h2 class="brand-title">意見回饋</h2>
     
     <form id="diamondl-form">
         <div class="input-group">
@@ -131,13 +133,13 @@
 
     // 取得網址列的參數
     const urlParams = new URLSearchParams(window.location.search);
-    const sourceApp = urlParams.get('source') || '💎DiamondL 藥師工具總覽';
+    const sourceApp = urlParams.get('source') || '💎 DiamondL 藥師工具';
 
-    // 將 App 名稱顯示在畫面的標籤上
-    document.getElementById('app-badge').innerText = `來源：${sourceApp}`;
+    // 將 App 名稱直接顯示在畫面的標籤上 (移除了"來源："前綴)
+    document.getElementById('app-badge').innerText = sourceApp;
 
     document.getElementById('diamondl-form').addEventListener('submit', function(e) {
-        e.preventDefault(); // 阻止表單預設的跳轉行為
+        e.preventDefault(); 
         
         const btn = document.getElementById('submit-btn');
         const msg = document.getElementById('status-msg');
@@ -166,7 +168,7 @@
             msg.style.display = "block";
             document.getElementById('feedback-content').value = "";
             
-            // 3秒後恢復按鈕原狀 (同步改成「送出」)
+            // 3秒後恢復按鈕原狀
             setTimeout(() => {
                 btn.innerText = "送出";
                 btn.disabled = false;
@@ -174,7 +176,7 @@
         })
         .catch(error => {
             // 傳送失敗：顯示紅色警告
-            btn.innerText = "送出"; // 同步改成「送出」
+            btn.innerText = "送出"; 
             btn.disabled = false;
             msg.innerText = "❌ 傳送失敗，請稍後再試。";
             msg.style.color = "#e74c3c";
