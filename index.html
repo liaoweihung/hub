@@ -2,16 +2,26 @@
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DiamondL 開發系列作品</title>
+    <meta name="description" content="DiamondL 臨床藥學與衛教工具系列，集中提供慢箋領藥計算、藥品查詢與中藥外用配方分析入口。">
 
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-T5R33JYTC0"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-T5R33JYTC0');
+      const host = location.hostname;
+      const localPreview = location.protocol === 'file:' || ['localhost', '127.0.0.1', '::1', '[::1]'].includes(host)
+        || /^192\.168\./.test(host) || /^10\./.test(host) || /^172\.(1[6-9]|2\d|3[0-1])\./.test(host);
+      let developer = false;
+      try { developer = localStorage.getItem('isDeveloper') === 'true'; } catch (_) {}
+      if (!localPreview && !developer) {
+        const script = document.createElement('script');
+        script.async = true;
+        script.src = 'https://www.googletagmanager.com/gtag/js?id=G-T5R33JYTC0';
+        document.head.appendChild(script);
+        gtag('js', new Date());
+        gtag('config', 'G-T5R33JYTC0');
+      }
     </script>
 
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E💎%3C/text%3E%3C/svg%3E">
@@ -111,6 +121,10 @@
         .creator-footer a:active {
             color: #66b3ff;
         }
+
+        * { box-sizing: border-box; }
+        a:focus-visible { outline: 3px solid #8cc9ff; outline-offset: 5px; }
+        .work-icon { display: grid; place-items: center; flex-shrink: 0; background: #183d45; font-size: 30px; }
     </style>
 </head>
 <body>
@@ -120,7 +134,8 @@
         <p>臨床藥學與衛教工具系列</p>
     </div>
 
-    <div class="container">
+    <main class="container">
+
         
         <a href="https://liaoweihung.github.io/pteduimg/index.html" class="app-card">
             <img src="https://liaoweihung.github.io/pteduimg/icon.png" alt="藥局衛教助手" class="app-icon">
@@ -157,7 +172,15 @@
             </div>
             <div class="app-arrow">➔</div>
         </a>
-    </div>
+        <a href="./pharmacy-tools.html" class="app-card">
+            <span class="app-icon work-icon" aria-hidden="true">🧰</span>
+            <div class="app-info">
+                <div class="app-title">藥局工作用工具</div>
+                <div class="app-desc">慢箋領藥計算、藥品查詢與配方分析・10 項工具</div>
+            </div>
+            <div class="app-arrow" aria-hidden="true">➔</div>
+        </a>
+    </main>
 
     <div class="creator-footer">
         <a href="https://liaoweihung.github.io/hub/index.html">&copy; 2026 💎 DiamondL 藥師開發設計</a>
